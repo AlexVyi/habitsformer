@@ -1,0 +1,32 @@
+.container {
+    font-family: montserrat, sans-serif;
+}
+.form-control{
+    font-size: 20px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+}
+.btn{
+    background-color: transparent;
+    color: #CF1727;
+}
+::-webkit-input-placeholder{
+    font-family: 'Pacifico', cursive;
+}
+::-moz-placeholder{
+    font-family: 'Pacifico', cursive;
+}
+#backgroundRegister {
+    position: fixed;
+    top:0;
+    left:0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background-position: center;
+    background-size: cover;
+    transition: 1s opacity;
+}

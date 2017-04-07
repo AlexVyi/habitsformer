@@ -1,0 +1,5 @@
+thanks for using faviconit!
+copy the files to your site and add this code inside the HTML <HEAD> tag:
+
+	<!-- ****** faviconit.com favicons ****** -->
+		<!-- ****** faviconit.com favicons ****** -->
