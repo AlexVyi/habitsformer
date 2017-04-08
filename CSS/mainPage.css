@@ -1,193 +1,3 @@
-#EndHolidayButton{
-  margin-top: 10vh;
-  margin-left: 40vw;
-  width: 20vw;
-  height:10vh;
-}
-
-
-.navbar-stephan{
-  z-index: 100;
-  text-align: left;
-  padding-top:1.5vh;
-  padding-bottom: 0.5vw;
-  position: fixed;
-  width: 100vw;
-
-  background-color: #8e6047;
-  -webkit-box-shadow: 0px 0px 1px 3px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 1px 3px rgba(0,0,0,0.5);
-  box-shadow: 0px 0px 1px 3px rgba(0,0,0,0.5);
-}
-
-.navbar-stephan h6{
-  font-weight: normal;
-  color:#a0908a;
-  font-size: 1.5vw;
-  margin: 0;
-  padding: 0;
-}
-
-
-.navbar-stephan h6:hover{
-  font-weight: normal;
-  font-size: 1.5vw;
-  color: #f4bc04;
-  cursor:pointer;
-}
-
-.navbar-stephan h6.active{
-  color: #f4bc04;
-}
-
-
-.navbar-stephan ul{
-  display: inline;
-  list-style: none;
-  margin-left: 0;
-}
-
-
-.navbar-stephan ul li{
-  display: inline;
-  vertical-align: middle;
-}
-
-.tab{
-  display: none;
-}
-
-.tab.active{
-  display: block;
-}
-
-.navbar-stephan.hidden-md{
-
-
-}
-
-.navbar-stephan.hidden-md h6{
-  font-size: 6vw;
-}
-
-
-#content{
-  padding-top: 5vw;
-  padding-left: 2.5vw;
-}
-
-h1{
-  font-size: 4vw;
-  text-align: center;
-  color:#8e6047;
-}
-
-h2{
-  font-size: 3vw;
-  color:#8e6047;
-}
-
-form#AddGoal{
-  margin-top: 5vw;
-}
-
-form .inputGroup {
-  margin-top: 3vw;
-  padding-bottom: 0.5vh;
-  border-bottom: 1px solid #a0908a;
-  width: 90%;
-}
-
-form .inputGroup *{
-  color:#a0908a;
-  display: inline;
-  font-size: 2vw;
-  border-bottom: none;
-  text-align: left;
-}
-
-form .inputGroup input,textarea, option, select{
-  padding-left: 3vw;
-  width: 85%;
-}
-
-form .inputGroup textarea{
-  resize: none;
-  vertical-align: top;
-  overflow: hidden;
-}
-
-
-form .inputGroup input,select,option ,textarea:focus{
-  color:#a0908a !important;
-  border-bottom: none !important;
-}
-
-form button{
-  margin-top: 2vw;
-}
-
-#AddGoal button{
-    height: 4vw;
-}
-
-#GoalsDisplayed h2{
-  font-size: 3.5vw;
-}
-
-.goalDisplayer{
-  margin-top: 6vw;
-}
-
-.goal{
-  color:#514e4b;
-  margin-top: 4vw;
-  padding-bottom: 0.5vw;
-  border-bottom: 1px solid #514e4b;
-}
-
-
-.goal h4{
-  font-size: 2.25vw;
-}
-.goal h5{
-  font-size: 1.75vw !important;
-}
-
-.goal p{
-  font-size: 1.25vw;
-}
-
-.goal .bottomBar{
-
-}
-
-.goal .bottomBar *{
-  display: inline;
-  font-size: 2vw;
-}
-
-.goal .bottomBar button{
-  width:2.5vw;
-  height: 2.5vw;
-  font-size:1vw
-}
-
-.FAQ h4{
-  margin-top: 4.5vw;
-  font-size: 1.75vw;
-}
-
-.FAQ p{
-  font-size: 1.25vw;
-}
-
-
-
-#paddingBottom{
-  height: 10vh;
-}
-
 
 /* The side navigation menu */
 .sidenav {
@@ -207,11 +17,11 @@ form button{
 }
 
 .sidenav h6{
-font-size: 2vw;
+    font-size: 2vw;
 }
 
 .sidenav ul{
-  list-style: none;
+    list-style: none;
 
 }
 
@@ -251,6 +61,6 @@ font-size: 2vw;
 }
 /*added by me*/
 #mySidenav{
-    background-image:url("Img/1.jpg");
+    background-image:url("Img/21.png");
 
 }
