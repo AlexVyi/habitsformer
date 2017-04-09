@@ -99,14 +99,22 @@
                                             <h5 ng-hide="goal.money!=0">Money: none</h5>
                                             <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
                                         </div>
-                                        <div class="col-xs-4" class="col-xs-3" style="text-align:right; vertical-align:bottom">
-                                            <button ng-click="CheckGoal(goal)" title="check goal"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                            <button ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><i class="fa fa-undo" aria-hidden="true"></i></button>
-                                            <button ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><i class="fa fa-money" aria-hidden="true" style="margin-left:-3px;"></i></button>
-                                            <button ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><i class="fa fa-money" aria-hidden="true" style="margin-left:-3px; color:#D3D3D3"></i></button>
-                                            <button ng-click="ShareGoal(goal)" title="share goal"><i class="fa fa-share-alt" aria-hidden="true"></i></button>
-                                            <button ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                            <button ng-hide="GetActualDate()-goal.timestamp>1000*3600*24" title="Can't edit goal yet" style="color:#D3D3D3"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
+                                        <div class="col-xs-4" style="text-align:right; vertical-align:bottom">
+                                            <button type="button" class="btn btn-default" ng-click="CheckGoal(goal)" title="check goal"><span class="addon"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><span class="addon"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span></button>
+
+                                            <button type="button" class="btn btn-default" ng-hide="GetActualDate()-goal.timestamp>1000*3600*24" title="Can't edit goal yet"><span class="addon"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></span></button>
+
                                         </div>
                                     </div>
                                 </div>
