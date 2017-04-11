@@ -58,39 +58,38 @@
 <!--page is user not on holiday-->
 <div ng-hide="user.onHoliday">
     <div class="container" id="wholePageContainer">
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">X</a>
-            <ul>
-                <li><a href="#"><h6 class="tabButton Home" onclick="changeTab('Home')">Home</h6></a></li>
-                <li><a href="#"><h6 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h6></a></li>
-                <li><a href="#"><h6 class="tabButton Account" onclick="changeTab('Account')">Account</h6></a></li>
-                <li><a href="#"><h6 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h6></a></li>
-                <li><a href="#"><h6 class="" ng-click="Logout()">Logout</h6></a></li>
-            </ul>
+        <div class="row" id="navRow">
+          <nav role="navigation">
+            <ul class="nav nav-pills col-xs-12 ">
+                <li role="presentation"><a href="#"><h6 class="tabButton Home" onclick="changeTab('Home')">Home</h6></a></li>
+                <li role="presentation"><a href="#"><h6 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h6></a></li>
+                <li role="presentation"><a href="#"><h6 class="tabButton Account" onclick="changeTab('Account')">Account</h6></a></li>
+                <li role="presentation"><a href="#"><h6 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h6></a></li>
+                <li role="presentation"><a href="#"><h6 class="" ng-click="Logout()">Logout</h6></a></li>
+             </ul>
+           </nav>
         </div>
-        <div class="row" style="padding-top: 10px;">
-            <div class="col-xs-5 col-lg-2 col-lg-offset-2">
-                <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
-                <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
-            </div>
-            <div class="col-xs-7 col-lg-5">
-                <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Points: {{user.points}}/{{GetFibbonacci(user.level)*1000}}</h3>
-                <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Points: {{user.points}}/5000</h3>
-            </div>
-            <div class="col-xs-1 col-lg-2">
-                    <span onclick="openNav()">
-                        <span><i class="glyphicon glyphicon-align-justify" style="font-size:30px;padding-left: 5px;"></i></span>
-                   </span>
-            </div>
 
+        <div class="panel panel-default" ng-model="user" onclick="closeNav()">
+            <div class="panel-heading">
+                <h1 class="heading">Hi {{user.userName}}, let's <span class="label label-default">get shit done!</span></h1>
+            </div>
+            <div class="panel-body">
+
+                    <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
+                    <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
+
+                    <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Points: {{user.points}}/{{GetFibbonacci(user.level)*1000}}</h3>
+                    <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Points: {{user.points}}/5000</h3>
+
+            </div>
         </div>
-        <div class="row well" ng-model="user" onclick="closeNav()">
-            <h1 class="heading">Hi {{user.userName}}, let's <span class="label label-default">get shit done!</span></h1>
-        </div>
+
+
         <div class="row tab Home active">
             <div class="col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1"><!--start col surrounds the goals themselves-->
                 <div class="row" id="GoalsDisplayed">
-                        <div class="row page-header" id="DisplayDont">
+                    <div class="row page-header" id="DisplayDont">
                         <blockquote><h1><span class="label label-danger">Dont</span><br>&lt;do something&gt;</h1></blockquote>
                         <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in donts">
                             <div>
@@ -121,232 +120,290 @@
 
                                 </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
 
-                        <div class="row page-header" id="DisplayDaily">
-                            <blockquote><h1><span class="label label-primary">Today</span><br>&lt;set a daily goal&gt;</h1></blockquote>
-                            <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in dailys">
-                                <div>
-                                    <h2 class="page-header">{{goal.title}} <span class="countdown">({{UpdateTime(goal).hours | numberFixedLen:2}}:{{UpdateTime(goal).minutes | numberFixedLen:2}}:{{UpdateTime(goal).seconds | numberFixedLen:2}})</span></h2>
-                                    <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
-                                    <h5>Points: +{{goal.points}}</h5>
-                                    <h5 ng-hide="goal.money!=0">Money: none</h5>
-                                    <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                    <div class="row page-header" id="DisplayDaily">
+                        <blockquote><h1><span class="label label-primary">Today</span><br>&lt;set a daily goal&gt;</h1></blockquote>
+                        <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in dailys">
+                            <div>
+                                <h2 class="page-header">{{goal.title}} <span class="countdown">({{UpdateTime(goal).hours | numberFixedLen:2}}:{{UpdateTime(goal).minutes | numberFixedLen:2}}:{{UpdateTime(goal).seconds | numberFixedLen:2}})</span></h2>
+                                <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
+                                <h5>Points: +{{goal.points}}</h5>
+                                <h5 ng-hide="goal.money!=0">Money: none</h5>
+                                <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                            </div>
+                            <div class="row bottomBar">
+                                <div class="col-lg-8">
+                                    <h3 ng-show="goal.actualRepeats<goal.repeats">Today: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
+                                    <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
+                                    <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
                                 </div>
-                                <div class="row bottomBar">
-                                    <div class="col-lg-8">
-                                        <h3 ng-show="goal.actualRepeats<goal.repeats">Today: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
-                                        <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
-                                        <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
-                                    </div>
-                                    <div class="col-lg-4 btn btn-toolbar" role="group" aria-label="Button Group" style="text-align:right">
-                                        <button type="button" class="btn btn-default" ng-click="CheckGoal(goal)" title="check goal"><span class="addon"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></span></button>
+                                <div class="col-lg-4 btn btn-toolbar" role="group" aria-label="Button Group" style="text-align:right">
+                                    <button type="button" class="btn btn-default" ng-click="CheckGoal(goal)" title="check goal"><span class="addon"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><span class="addon"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></span></button>
+                                    <button type="button" class="btn btn-default" ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><span class="addon"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
+                                    <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
+                                    <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span></button>
+                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span></button>
+                                    <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span></button>
 
-                                        <button type="button" class="btn btn-default" ng-hide="GetActualDate()-goal.timestamp>1000*3600*24" title="Can't edit goal yet"><span class="addon"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></span></button>
-                                    </div>
+                                    <button type="button" class="btn btn-default" ng-hide="GetActualDate()-goal.timestamp>1000*3600*24" title="Can't edit goal yet"><span class="addon"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></span></button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row page-header" id="DisplayWeekly">
-                            <blockquote><h1><span class="label label-primary">This Week</span><br>&lt;set a weekly goal&gt;</h1></blockquote>
-                            <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in weeklys">
-                                <div>
-                                    <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillWeek}} days, {{UpdateTime(goal).hours}} hours left)</h2>
-                                    <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
-                                    <h5>Points: +{{goal.points}}</h5>
-                                    <h5 ng-hide="goal.money!=0">Money: none</h5>
-                                    <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                    <div class="row page-header" id="DisplayWeekly">
+                        <blockquote><h1><span class="label label-primary">This Week</span><br>&lt;set a weekly goal&gt;</h1></blockquote>
+                        <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in weeklys">
+                            <div>
+                                <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillWeek}} days, {{UpdateTime(goal).hours}} hours left)</h2>
+                                <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
+                                <h5>Points: +{{goal.points}}</h5>
+                                <h5 ng-hide="goal.money!=0">Money: none</h5>
+                                <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                            </div>
+                            <div class="row bottomBar">
+                                <div class="col-lg-8">
+                                    <h3 ng-show="goal.actualRepeats<goal.repeats">This Week: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
+                                    <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
+                                    <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
                                 </div>
-                                <div class="row bottomBar">
-                                    <div class="col-lg-8">
-                                        <h3 ng-show="goal.actualRepeats<goal.repeats">This Week: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
-                                        <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
-                                        <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
-                                    </div>
-                                    <div class="col-lg-4 btn-toolbar" role="group" aria-label="Button Group">
-                                        <button type="button" class="btn btn-default" ng-click="CheckGoal(goal)" title="check goal"><span class="addon"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></span> </button>
+                                <div class="col-lg-4 btn-toolbar" role="group" aria-label="Button Group">
+                                    <button type="button" class="btn btn-default" ng-click="CheckGoal(goal)" title="check goal"><span class="addon"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><span class="addon"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><span class="addon"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.money!=0"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.money!=0"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.money!=0"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.money!=0"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24*14" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24*14" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span> </button>
 
-                                        <button type="button" class="btn btn-default" ng-hide="GetActualDate()-goal.timestamp>1000*3600*24*14" title="Can't edit goal yet"><span class="addon"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></span> </button>
-                                    </div>
+                                    <button type="button" class="btn btn-default" ng-hide="GetActualDate()-goal.timestamp>1000*3600*24*14" title="Can't edit goal yet"><span class="addon"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></span> </button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="row page-header" id="DisplayMonthly">
-                            <blockquote><h1><span class="label label-primary">This Month </span><br>&lt;set a monthly goal&gt;</h1></blockquote>
-                            <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in monthlys">
-                                <div>
-                                    <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillMonth}} days, {{UpdateTime(goal).hours}} hours left)</h2>
-                                    <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
-                                    <h5>Points: +{{goal.points}}</h5>
-                                    <h5 ng-hide="goal.money!=0">Money: none</h5>
-                                    <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                    <div class="row page-header" id="DisplayMonthly">
+                        <blockquote><h1><span class="label label-primary">This Month </span><br>&lt;set a monthly goal&gt;</h1></blockquote>
+                        <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in monthlys">
+                            <div>
+                                <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillMonth}} days, {{UpdateTime(goal).hours}} hours left)</h2>
+                                <p ng-repeat=" p in goal.description.split('\n')">{{p}}</p>
+                                <h5>Points: +{{goal.points}}</h5>
+                                <h5 ng-hide="goal.money!=0">Money: none</h5>
+                                <h5 ng-show="goal.money!=0">Money: {{goal.money.toFixed(2)}}$</h5>
+                            </div>
+                            <div class="row bottomBar">
+                                <div class="col-lg-8">
+                                    <h3 ng-show="goal.actualRepeats<goal.repeats">This Month: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
+                                    <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
+                                    <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
                                 </div>
-                                <div class="row bottomBar">
-                                    <div class="col-lg-8">
-                                        <h3 ng-show="goal.actualRepeats<goal.repeats">This Month: {{goal.actualRepeats}}/{{goal.repeats}}</h3>
-                                        <h3 ng-show="goal.actualRepeats===goal.repeats">Completed </h3>
-                                        <h3 ng-show="goal.actualRepeats>goal.repeats">Completed + {{goal.actualRepeats-goal.repeats}}</h3>
-                                    </div>
-                                    <div class="col-lg-4 btn btn-toolbar" role="group" aria-label="Button Group">
-                                        <button type="button" class="btn btn-default"  ng-click="CheckGoal(goal)" title="check goal"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></button>
+                                <div class="col-lg-4 btn btn-toolbar" role="group" aria-label="Button Group">
+                                    <button type="button" class="btn btn-default"  ng-click="CheckGoal(goal)" title="check goal"><i class="glyphicon glyphicon-ok" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default"  ng-click="UndoGoal(goal)" title="undo goal" ng-show="goal.canUndo"><i class="glyphicon glyphicon-repeat" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default"  ng-click="Monetize(goal)" title="monetised (click to switch)" ng-show="goal.isMonetised"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default"  ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-click="ShareGoal(goal)" title="share goal"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default"  ng-click="ShareGoal(goal)" title="share goal"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-show="GetActualDate()-goal.timestamp>1000*3600*24*28" ng-click="EditGoal(goal)" title="edit goal"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default"  ng-show="GetActualDate()-goal.timestamp>1000*3600*24*28" ng-click="EditGoal(goal)" title="edit goal"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></button>
 
-                                        <button type="button" class="btn btn-default"  ng-hide="GetActualDate()-goal.timestamp>1000*3600*24*28" title="Can't edit goal yet"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></button>
-                                    </div>
+                                    <button type="button" class="btn btn-default"  ng-hide="GetActualDate()-goal.timestamp>1000*3600*24*28" title="Can't edit goal yet"><i class="glyphicon glyphicon-minus-sign" style="font-size: 25px;"></i></button>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                 </div><!--end Goals displayed-->
 
             </div><!---ends col-md-8 goals themselves--->
         </div><!--ends the row above-->
-        <div class="row tab AddGoals" onclick="closeNav()" style="width: 100%;" id="addGoals">
-            <div class="col-xs-6 col-xs-offset-3 col-lg-6 col-lg-offset-4">
-                <h2>Add Goal</h2>
-                <form id="AddGoal" novalidate>
-                    <div class="inputGroup">
-                        <h6>Type:</h6>
-                        <select ng-model="newGoal.goalType" ng-init="newGoal.goalType = 'Dont'">
-                            <option value="Dont">Dont</option>
-                            <option value="Daily">Daily</option>
-                            <option value="Weekly">Weekly</option>
-                            <option value="Monthly">Monthly</option>
-                        </select>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Title:</h6>
-                        <input type="text" ng-model="newGoal.title" maxlength="50">
-                    </div>
-                    <div class="inputGroup" ng-model="newGoal" ng-hide="newGoal.goalType !== 'Dont'">
-                        <h6>Points:</h6>
-                        <input type="number" ng-model="newGoal.points" max="-500" step="1" min="-1000000">
-                    </div>
-                    <div class="inputGroup" ng-model="newGoal" ng-hide="newGoal.goalType == 'Dont'">
-                        <h6>Repeats:</h6>
-                        <input type="number" ng-model="newGoal.repeats" min="0" max="10000" step="1">
-                    </div>
-                    <div class="inputGroup">
-                        <h6 style="vertical-align:center;" >Description:</h6>
-                        <textarea rows="4" type="text" ng-model="newGoal.description" maxlength="500"></textarea>
-                    </div>
-                    <button ng-click="AddGoal()" id="commitToGoal">Commit to goal</button>
-                </form>
-            </div>
-        </div>
-        <div class="row tab EditGoal" onclick="closeNav()">
-            <div class="col-xs-8 col-xs-offset-4 col-lg-8 col-lg-offset-4">
-                <h2>Edit Goal</h2>
-                <form id="EditGoal" novalidate >
-                    <div class="inputGroup">
-                        <h6>Type:</h6>
-                        <input type="text" ng-model="editGoal.goalType" maxlength="50" readonly>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Title:</h6>
-                        <input type="text" ng-model="editGoal.title" maxlength="50">
-                    </div>
-                    <div class="inputGroup" ng-model="editGoal" ng-hide="editGoal.goalType !== 'Dont'">
-                        <h6>Points:</h6>
-                        <input type="number" ng-model="editGoal.points" max="-500" step="1" min="-1000000">
-                    </div>
-                    <div class="inputGroup" ng-model="editGoal" ng-hide="editGoal.goalType == 'Dont'">
-                        <h6>Repeats:</h6>
-                        <input type="number" ng-model="editGoal.repeats" min="0" max="10000" step="1">
-                    </div>
-                    <div class="inputGroup" ng-model="editGoal" >
-                        <h6>Money:</h6>
-                        <input type="number" ng-model="editGoal.money" max="10" step="0.01" min="0">
-                    </div>
-                    <div class="inputGroup">
-                        <h6 style="vertical-align:center;" >Description:</h6>
-                        <textarea rows="4" type="text" ng-model="editGoal.description" maxlength="500"></textarea>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Password:</h6>
-                        <input type="password" ng-model="password" style="width:65%">
-                    </div>
-                    <button ng-click="SaveChangesGoal(editGoal)">Save changes</button>
-                    <button ng-click="RemoveGoal(editGoal)">Remove Goal</button>
-                    <button onclick="changeTab('Home')">Cancel</button>
-                </form>
-            </div>
-        </div>
-        <div class="row tab Account"  onclick="closeNav()">
-            <div class="col-xs-8 col-xs-offset-4 col-lg-8 col-lg-offset-4">
-                <h2>Account</h2>
-                <form id="EditAccount" >
-                    <!--<div class="inputGroup">
-                      <h6>Id:</h6>
-                      <input type="text" ng-model="editUser.uid" maxlength="50" readonly></input>
-                    </div>-->
-                    <div class="inputGroup">
-                        <h6>Name:</h6>
-                        <input type="text" ng-model="editUser.userName" maxlength="50" ></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Email:</h6>
-                        <input type="text" ng-model="editUser.email" maxlength="50" ></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Level:</h6>
-                        <input type="text" ng-model="editUser.level" readonly></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Points:</h6>
-                        <input type="text" ng-model="editUser.points" readonly></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>New Password:</h6>
-                        <input type="password" ng-model="editUser.newPsw"  style="width:70%"></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Confirm new Password:</h6>
-                        <input type="password" ng-model="editUser.confNewPsw" style="width:65%"></input>
-                    </div>
-                    <div class="inputGroup">
-                        <h6>Current password:</h6>
-                        <input type="password" ng-model="editUser.acutalPsw" style="width:65%"></input>
-                    </div>
-                    <button ng-click="SaveAccountChanges()">Save</button>
-                    <button ng-click="EnterHolidayMode()">Enter holiday mode</button>
-                    <button ng-click="DeleteAccount()">Delete Account</button>
 
-                </form>
+        <div class="row tab AddGoals" onclick="closeNav()" style="width: 100%;">
+            <div class="col-xs-11 col-xs-offset-1  col-lg-6 col-lg-offset-3">
+                <div class="panel panel-default" id="addGoals">
+                    <div class="panel-heading">
+                        <h2>Add Goal</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <form  id="AddGoal" novalidate>
+                                <div class="inputGroup">
+                                    <p class="form-control-static">Type</p>
+                                    <select id="Type" class="form-control" ng-model="newGoal.goalType" ng-init="newGoal.goalType = 'Dont'">
+                                        <option value="Dont">Dont</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Weekly">Weekly</option>
+                                        <option value="Monthly">Monthly</option>
+                                    </select>
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="Title" class="sr-only">Title</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-heart-empty"></span></span>
+                                    <input id="Title" class="form-control" type="text" ng-model="newGoal.title" maxlength="50" placeholder="Title">
+                                </div>
+
+                                <div class="input-group" ng-model="newGoal" ng-hide="newGoal.goalType !== 'Dont'"  style="padding-top: 10px;">
+                                    <label for="Points" class="sr-only">Points</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-hand-right"></span></span>
+                                    <input id="Points" class="form-control" type="number" ng-model="newGoal.points" max="-500" step="1" min="-1000000" placeholder="Points">
+                                </div>
+
+                                <div class="input-group" ng-model="newGoal" ng-hide="newGoal.goalType == 'Dont'"  style="padding-top: 10px;">
+                                    <label for="Repeats" class="sr-only">Repeats</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-retweet"></span></span>
+                                    <input id="Repeats" class="form-control" type="number" ng-model="newGoal.repeats" min="0" max="10000" step="1" placeholder="Repeats">
+                                </div>
+
+                                <div class="input-group input-group-lg" style="width:100%;">
+                                    <p class="form-control-static">Description</p>
+                                    <textarea id="Description" class="form-control" rows="4" type="text" ng-model="newGoal.description" maxlength="500"></textarea>
+                                </div>
+
+                                <button class="btn btn-md" ng-click="AddGoal()" id="commitToGoal" style="margin-top:10px;">Commit to goal</button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!--inchide panel default-->
             </div>
-        </div>
+        </div><!--ends row tab AddGoals-->
+
+        <div class="row tab EditGoal" onclick="closeNav()" style="width: 100%;">
+            <div class="col-xs-11 col-xs-offset-1 col-lg-6 col-lg-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>Edit Goal</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <form id="EditGoal" novalidate >
+                                <div class="input-group">
+                                    <label for="TypeFromEdit" class="sr-only">Type</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-question-sign"></span></span>
+                                    <input id="TypeFromEdit" type="text" ng-model="editGoal.goalType" maxlength="50" readonly class="form-control" placeholder="Type">
+                                </div>
+
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="titleFromEdit" class="sr-only">Title</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></span>
+                                    <input id="titleFromEdit" type="text" ng-model="editGoal.title" maxlength="50" class="form-control" placeholder="Title">
+                                </div>
+
+                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType !== 'Dont'" style="padding-top: 10px;">
+                                    <label for="pointsFromEdit" class="sr-only">Points</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-hand-right"></span></span>
+                                    <input id="pointsFromEdit" type="number" ng-model="editGoal.points" max="-500" step="1" min="-1000000" class="form-control" placeholder="Points">
+                                </div>
+
+                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType == 'Dont'" style="padding-top: 10px;">
+                                    <label for="repeatsFromEdit" class="sr-only">Repeats</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-retweet"></span></span>
+                                    <input id="repeatsFromEdit" type="number" ng-model="editGoal.repeats" min="0" max="10000" step="1" class="form-control" placeholder="Repeats">
+                                </div>
+
+                                <div class="input-group" ng-model="editGoal" style="padding-top: 10px;">
+                                    <label for="Money" class="sr-only">Money</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-piggy-bank"></span></span>
+                                    <input id="Money" type="number" ng-model="editGoal.money" max="10" step="0.01" min="0" class="form-control" placeholder="Money">
+                                </div>
+
+                                <div class="input-group" style="width:100%;padding-top: 10px;">
+                                    <p class="form-control-static">Description</p>
+                                    <textarea id="descriptionFromEdit" class="form-control" rows="4" type="text" ng-model="editGoal.description" maxlength="500"></textarea>
+                                </div>
+
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="password" class="sr-only">Password</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>
+                                    <input id="password" type="password" ng-model="password" class="form-control" placeholder="Password">
+                                </div>
+                                <div class="btn-group btn-group-justified" role="Group" aria-label="Button-Group">
+                                     <button class="btn btn-default" ng-click="SaveChangesGoal(editGoal)" style="width:100%;margin-top: 10px;">Save changes</button>
+                                     <button class="btn btn-danger" ng-click="RemoveGoal(editGoal)" style="width: 100%;margin-top: 10px;">Remove Goal</button>
+                                     <button class="btn btn-primary" onclick="changeTab('Home')" style="width: 100%;margin-top: 10px;">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--ends row tab editGoal-->
+
+        <div class="row tab Account"  onclick="closeNav()" style="width: 100%;">
+            <div class="col-xs-11 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2>Account</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <form id="EditAccount" >
+                                <!--<div class="inputGroup">
+                                  <h6>Id:</h6>
+                                  <input type="text" ng-model="editUser.uid" maxlength="50" readonly></input>
+                                </div>-->
+                                <div class="input-group">
+                                    <label for="user" class="sr-only">User</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <input id="user" type="text" ng-model="editUser.userName" class="form-control" placeholder="Enter your name" maxlength="50">
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="email" class="sr-only">Email</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                                    <input id="email" type="text" ng-model="editUser.email" class="form-control" placeholder="Email" maxlength="50">
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="Level" class="sr-only">Level</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-level-up"></span></span>
+                                    <input id="Level" type="text" ng-model="editUser.level" class="form-control" placeholder="Level" readonly>
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="PointsInAccount" class="sr-only">Points</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-ruble"></span></span>
+                                    <input id="PointsInAccount" type="text" ng-model="editUser.points" class="form-control" placeholder="Points" readonly>
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="New Password" class="sr-only">New Password</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input id="New Password" type="password" ng-model="editUser.newPsw" class="form-control" placeholder="New password">
+                                </div>
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="Confirm new Password" class="sr-only">Confirm new Password</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input id="Confirm new Password" type="password" ng-model="editUser.confNewPsw" class="form-control" placeholder="Confirm new password">
+                                </div>
+
+                                <div class="input-group" style="padding-top: 10px;">
+                                    <label for="Current Password" class="sr-only">Current Password</label>
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>
+                                    <input id="Current Password" type="password" ng-model="editUser.acutalPsw" class="form-control" placeholder="Current password">
+                                </div>
+                                <div class="btn-group btn-group-justify" role="Group" aria-label="Button-Group" style="width: 100%;">
+                                   <button class="btn btn-default" ng-click="SaveAccountChanges()" style="width: 100%;margin-top: 10px;">Save</button>
+                                   <button class="btn btn-default" ng-click="EnterHolidayMode()" style="width: 100%;margin-top: 10px;">Enter holiday mode</button>
+                                   <button class="btn btn-default" ng-click="DeleteAccount()" style="width: 100%;margin-top: 10px;">Delete Account</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--ends row tab Account-->
     </div><!--end the page container-->
 </div><!--ends ng-hide="user.onHoliday"-->
 
