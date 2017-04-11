@@ -63,5 +63,19 @@
 /*added by me*/
 #mySidenav{
     background-image:url("Img/21.png");
+    background-position: center center;
+    background-size: cover;
 
+}
+
+.tab.active{
+    display: inline-block;
+}
+.tab {
+    display: none;
+}
+#addGoals{
+    background-image: url("Img/clock.jpg");
+    background-position: center center;
+    background-size: cover;
 }
