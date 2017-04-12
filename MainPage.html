@@ -11,10 +11,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="Plugins/sweetalert-master/dist/sweetalert.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/6.0.0/normalize.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/mainPage.css">
     <link rel="stylesheet" href="CSS/ie10-viewport-bug-workaround.css">
     <!--fav-->
@@ -58,30 +60,35 @@
 <!--page is user not on holiday-->
 <div ng-hide="user.onHoliday">
     <div class="container" id="wholePageContainer">
-        <div class="row" id="navRow">
-          <nav role="navigation">
-            <ul class="nav nav-pills col-xs-12 ">
-                <li role="presentation"><a href="#"><h6 class="tabButton Home" onclick="changeTab('Home')">Home</h6></a></li>
-                <li role="presentation"><a href="#"><h6 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h6></a></li>
-                <li role="presentation"><a href="#"><h6 class="tabButton Account" onclick="changeTab('Account')">Account</h6></a></li>
-                <li role="presentation"><a href="#"><h6 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h6></a></li>
-                <li role="presentation"><a href="#"><h6 class="" ng-click="Logout()">Logout</h6></a></li>
-             </ul>
-           </nav>
-        </div>
 
-        <div class="panel panel-default" ng-model="user" onclick="closeNav()">
+        <div id="navContainer" class="container-fluid collapse navbar-collapse">
+            <nav role="navigation" class="navbar navbar-inverse  navbar-fixed-bottom">
+                    <ul class="nav nav-pills col-xs-12" style="padding-left: 30px;">
+                        <li role="presentation"><a href="#"><h5 class="tabButton Home" onclick="changeTab('Home')">Home</h5></a></li>
+                        <li role="presentation"><a href="#"><h5 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h5></a></li>
+                        <li role="presentation"><a href="#"><h5 class="tabButton Account" onclick="changeTab('Account')">Account</h5></a></li>
+                        <li role="presentation"><a href="#"><h5 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h5></a></li>
+                        <li role="presentation" class="navbar-right"><a href="#"><h5 class="" ng-click="Logout()">Logout</h5></a></li>
+                     </ul>
+                </nav>
+        </div>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navContainer">
+            <span class="icon-bar" style="background-color: #5dc2f1"></span>
+            <span class="icon-bar" style="background-color: #5dc2f1"></span>
+            <span class="icon-bar" style="background-color: #5dc2f1"></span>
+            <span class="icon-bar" style="background-color: #5dc2f1"></span>
+        </button>
+
+        <div class="panel panel-info" ng-model="user" onclick="closeNav()">
             <div class="panel-heading">
-                <h1 class="heading">Hi {{user.userName}}, let's <span class="label label-default">get shit done!</span></h1>
+                <h1 class="panel-title" style="font-family:'Josefin Sans', sans-serif;font-size:50px;">Hi {{user.userName}}, let's <span class="label label-default">get shit done!</span></h1>
             </div>
             <div class="panel-body">
-
                     <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
                     <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Level: {{user.level}}</h3>
 
                     <h3 class="hidden-xs hidden-sm label label-warning" style="font-size:20px;">Points: {{user.points}}/{{GetFibbonacci(user.level)*1000}}</h3>
                     <h3 class="hidden-md hidden-lg label label-warning" style="font-size:20px;">Points: {{user.points}}/5000</h3>
-
             </div>
         </div>
 
@@ -283,58 +290,64 @@
         </div><!--ends row tab AddGoals-->
 
         <div class="row tab EditGoal" onclick="closeNav()" style="width: 100%;">
-            <div class="col-xs-11 col-xs-offset-1 col-lg-6 col-lg-offset-3">
-                <div class="panel panel-default">
+            <div class="col-xs-12 col-lg-6 col-lg-offset-3">
+                <div class="panel panel-info" style="background-color: transparent;">
                     <div class="panel-heading">
                         <h2>Edit Goal</h2>
                     </div>
-                    <div class="panel-body">
-                        <div class="form-group">
-                            <form id="EditGoal" novalidate >
+                    <div class="panel-body" style="background-color: transparent;">
+                        <div class="form-group" style="background-color: transparent;">
+                            <form id="EditGoal" novalidate style="background-color: transparent;">
+                                <p class="form-control-static">Type</p>
                                 <div class="input-group">
                                     <label for="TypeFromEdit" class="sr-only">Type</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-question-sign"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-file" aria-hidden="true"></i></span>
                                     <input id="TypeFromEdit" type="text" ng-model="editGoal.goalType" maxlength="50" readonly class="form-control" placeholder="Type">
                                 </div>
 
-                                <div class="input-group" style="padding-top: 10px;">
+                                <p class="form-control-static">Title</p>
+                                <div class="input-group">
                                     <label for="titleFromEdit" class="sr-only">Title</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>
                                     <input id="titleFromEdit" type="text" ng-model="editGoal.title" maxlength="50" class="form-control" placeholder="Title">
                                 </div>
 
-                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType !== 'Dont'" style="padding-top: 10px;">
+                                <p class="form-control-static" ng-model="editGoal" ng-hide="editGoal.goalType !== 'Dont'">Points</p>
+                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType !== 'Dont'">
                                     <label for="pointsFromEdit" class="sr-only">Points</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-hand-right"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-line-chart" aria-hidden="true"></i></span>
                                     <input id="pointsFromEdit" type="number" ng-model="editGoal.points" max="-500" step="1" min="-1000000" class="form-control" placeholder="Points">
                                 </div>
 
-                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType == 'Dont'" style="padding-top: 10px;">
+                                <p class="form-control-static"ng-model="editGoal" ng-hide="editGoal.goalType == 'Dont'">Repeats</p>
+                                <div class="input-group" ng-model="editGoal" ng-hide="editGoal.goalType == 'Dont'">
                                     <label for="repeatsFromEdit" class="sr-only">Repeats</label>
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-retweet"></span></span>
                                     <input id="repeatsFromEdit" type="number" ng-model="editGoal.repeats" min="0" max="10000" step="1" class="form-control" placeholder="Repeats">
                                 </div>
 
-                                <div class="input-group" ng-model="editGoal" style="padding-top: 10px;">
+                                <p class="form-control-static">Money</p>
+                                <div class="input-group" ng-model="editGoal">
                                     <label for="Money" class="sr-only">Money</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-piggy-bank"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-cc-visa" aria-hidden="true"></i></span>
                                     <input id="Money" type="number" ng-model="editGoal.money" max="10" step="0.01" min="0" class="form-control" placeholder="Money">
                                 </div>
 
                                 <div class="input-group" style="width:100%;padding-top: 10px;">
                                     <p class="form-control-static">Description</p>
+                                    <i class="fa fa-desktop" aria-hidden="true"></i>
                                     <textarea id="descriptionFromEdit" class="form-control" rows="4" type="text" ng-model="editGoal.description" maxlength="500"></textarea>
                                 </div>
 
                                 <div class="input-group" style="padding-top: 10px;">
                                     <label for="password" class="sr-only">Password</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-unlock" aria-hidden="true"></i></span>
                                     <input id="password" type="password" ng-model="password" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="btn-group btn-group-justified" role="Group" aria-label="Button-Group">
                                      <button class="btn btn-default" ng-click="SaveChangesGoal(editGoal)" style="width:100%;margin-top: 10px;">Save changes</button>
-                                     <button class="btn btn-danger" ng-click="RemoveGoal(editGoal)" style="width: 100%;margin-top: 10px;">Remove Goal</button>
-                                     <button class="btn btn-primary" onclick="changeTab('Home')" style="width: 100%;margin-top: 10px;">Cancel</button>
+                                     <button class="btn btn-default" ng-click="RemoveGoal(editGoal)" style="width: 100%;margin-top: 10px;">Remove Goal</button>
+                                     <button class="btn btn-default" onclick="changeTab('Home')" style="width: 100%;margin-top: 10px;">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -368,7 +381,7 @@
                                 </div>
                                 <div class="input-group" style="padding-top: 10px;">
                                     <label for="Level" class="sr-only">Level</label>
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-level-up"></span></span>
+                                    <span class="input-group-addon"><i class="fa fa-level-up" aria-hidden="true"></i></span>
                                     <input id="Level" type="text" ng-model="editUser.level" class="form-control" placeholder="Level" readonly>
                                 </div>
                                 <div class="input-group" style="padding-top: 10px;">
@@ -404,6 +417,250 @@
                 </div>
             </div>
         </div><!--ends row tab Account-->
+
+        <div class="row tab FAQ" onclick="closeNav()">
+            <div class="container">
+                <section>
+                    <div class="page-header" id="intrebarifrecvente">
+                        <h2>  <span class="glyphicon glyphicon-chevron-right"></span> Frequently asked questions, <small> and, of course, the proper answers.For the questions and answers not found here,please <a href="mailto:webmaster@habitsformer.com"> contact us!</a></small></h2>
+                    </div> <!-- ends page header -->
+
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-1" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size:22px;">Why use your app and not any of the other ones?</span>
+                                        <span class="glyphicon glyphicon-folder-open" style="font-size: 18px;"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-1" class="panel-collapse collapse in"><!--daca lasam "in" prima intrebare cu tot cu raspuns va ramane deschisa-->
+                                    <div class="panel-body">
+                                        Ok, lets get the big question out of the way first.
+                                        What makes us different from all the other apps, which are more oriented towards being todo lists, is the fact that our main focus is building positive habbits and removing negative ones rather than presenting tasks on a day to day basis.
+                                        Our point system is constructed in such a way, that it's most rewarding to have a few goals and stick to them, rather than having a lot and not committing/sticking to them only every once in a while.
+                                    </div>
+                                </div><!--ends panel collapse-1-->
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-2" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Sounds good, how do I use your app?</span>
+                                        <span style="font-size:18px;" class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h4>Overview</h4>
+                                        <p>The app has two main purposes. Get rid of the negative habits that stand in your way, and form new ones,positive habits, that help you succeed. To do this it uses a reward system based on points, which is designed in a way that lets you easily track your progress. Because you're unique the app is highly customizable and you can tailor you habits schedule, to be the best fit for you.
+                                        </p>
+                                        <br><h4>How do I get rid of bad habits?</h4><p>In order to remove a bad habit you add it to your goal as a Don't (for example: Don't bite your fingernails!) and decide how many points this goal is worth (let's say 500). Now, each time you bite your nails you're supposed to click the little box next to this goal. Once you click it you lose the amount of points you've commited (in this case 500). Stick to your plan and don't fall back into this habit anymore and you will have a nice surprise (what it is exactly is a secret ;) )</p>
+                                        <br><h4>How do I form a positive habit?</h4>
+                                        <p> So you wish to improve yourself, great. Here is how we can help: Add the habit, set a timeframe for it (daily, weekly or monthly) and set a number of repeats per timeframe, for example, if you wish to get into shape you might add something like jog, weekly 3 times, which means that you commit to jogging <b>at least</b> three times a week (overachievers are welcome and get rewarded by merit). If you don't stick to your new formed habit (let's say that in a week you only jog twice) you lose points. On the other hand, if you stick to your word and put in the work you'll be rewarded at the end of the day, week or month (depending on the timeframe you set).</p>
+                                        <p>You lose points if you fulfill a don't. You also lose points if you do not stick to your goals.</p>
+                                    </div>
+                                </div><!--ends panel collapse-2-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-3" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">How are the points calculated?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        Dailys are worth 500, weeklies 1000 and monthlies 3000 for each repeat. If you don't fulfill them you lose the same amount of points for each unfulfilled repeat. You only get points if you fulfill all repeats. For example if you set a habit of exercising three times a week and exercise three times, you get 3X1000=3000 points. If you only exercise twice you lose 1000 points( for being 1 repeat short of a weekly you lose 1X1000 points).
+                                    </div>
+                                </div><!--ends panel collapse-3-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-4" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Can I overachieve?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>Yes you can. If you overachive you get half the point you would normally get for a repeat. This measure is meant to otivate you to set you goals higher if you notice that you frequently overachive.
+                                        <p> Using the same example as above, if you exercise 4 times during a week you get 3X100=3000 for fulfilling your goal and 1X500=500 for overachieving by 1.
+                                    </div>
+                                </div><!--ends panel collapse-4-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-5" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Can I edit/remove goals?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-5" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>Yes, just click on the pencil icon next to the goal. Donts can be edited at all times, Daily goals can only be edited three days after adding or last editing them, weeklies and monthlies only after a week or month respectively</p>
+                                    </div>
+                                </div><!--ends panel collapse-5-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-6" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">What if I go on holiday/ am sick/ can't fulfill my goals for any other reason?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-6" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>If that happens you can just enable holiday mode. You find the button for that in the tab "Account". Holiday mode lasts for at least one day and can't be used more than twice a week.</p>
+                                        <p><b> Holiday mode does not disable your donts</b></p>
+                                    </div>
+                                </div><!--ends panel collapse-6-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-7" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Why should I share my goals/score on social media</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-7" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>There are lots of studies proving that just knowing that someone else is watching you, increases the chance of you sticking to your plans/goals and also your productivity. It is a form of commitment, to publicly announce your plans and we wanted to transfer this self-motivation hack in the online medium.</p>
+                                        <p>For more details click <a href="https://www.simplypsychology.org/Social-Facilitation.html">here</a> or <a href="https://psychcentral.com/encyclopedia/social-facilitation/">here</a></p>
+                                    </div>
+                                </div><!--ends panel collapse-7-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-8" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">What is the whole goal monetization thing?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-8" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>If you think it will help you stick to your new habits, you can choose to monetize your goals. You can decide freely ho much money you wish to pledge to your goal. If you don't fulfill them (or if you commit a dont) we'll take that amount of money from your account.</p>
+                                        <p><b>You'll always be notified before we take and money from you and you'll have the option to decline the transaction. Before we take anything from you we'll ask you again and you can always chose to take your pledge back.</b></p>
+                                    </div>
+                                </div><!--ends panel collapse-8-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-9" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;"> Isn't this whole monetization thing just a scam to take my money???</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-9" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <p>Well, it's not a scam if we inform you about it and developers also need food and shelter. Joke aside, it's compleately your choise whether you wish to monetize or not. Like we've already said, you'll always have the choise of not giving money when not fulfilling a goal, even if you have monetized your goals. It's just an additional tool you can use if you feel like you need help sticking to your goals.</p>
+                                        <p>Also, no one's asking you to pledge huge sums (even though we wouldn't stop you), but you'd be surprised, what a great psychological difference it makes to pledge a dollar or even 50 cents to your goal. We promise you'll feel the difference!</p>
+
+                                    </div>
+                                </div><!--ends panel collapse-9-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-10" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Anyway, who are you?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-10" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>We are Vying Technologies, a startup directed at helping people becomming the best version of themselves. Our software is directed at increasing motivation and productivity, forming great habits and losing bad ones, promoting education and equality of chances.And it is no bullshit.If you will follow us,you will see.</p>
+                                    </div>
+                                </div><!--ends panel collapse-10-->
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-11" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">I meant more like on a personal level.</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-11" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>We are Alexandru Petru and Stephan-Alexander Ariesanu. We are both from Romania and founded Vying Technologie because we believe in the potential of modern technologies to do good.</p>
+                                        <p><b>Stephan</b>: I'm 19 and I am currently studying computer science in Saarbrucken, Germany. I live in my godparents basement (no joke) and the way to the Uni takes over an hour - but public transportation is free for students and my godparents are amazing cooks, so I got that going for me which is nice.</p>
+                                        <p><b>Alex</b>: I am complicated. :) More details on alexandrupetru.me</p>
+                                    </div>
+                                </div><!--ends panel collapse-11-->
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-12" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Why is Vying Technologie incorporated in Estonia?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-12" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>They allow us to do everything online, which, considering we live a timezone appart is really helpfull.No authorizations required,and other goodies for developers.</p>
+                                    </div>
+                                </div><!--ends panel collapse-12-->
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <a href="#collapse-13" data-toggle="collapse" data-parent="#accordion">
+                                        <span style="font-size: 22px;">Sounds awesome, how can I help?</span>
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                    </a>
+                                </div><!--end panel title-->
+                                <div id="collapse-13" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <p>If you have any suggestions on how to improve the app just write to us at <a href="mailto:webmaster@habitsformer.com">webmaster@habitsformer.com</a>. Any feedback is welcome. Telling other people about us is also a great way you can help (both us and your friends). If you feel like donating just click <a href="#">here</a></p>
+                                    </div>
+                                </div><!--ends panel collapse-13-->
+                            </div>
+                        </div>
+                    </div><!-- ends panel group-->
+
+
+                </section>
+            </div><!--ends first container-->
+
+        </div><!--ends row tab FAQ-->
+
     </div><!--end the page container-->
 </div><!--ends ng-hide="user.onHoliday"-->
 

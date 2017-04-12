@@ -1,7 +1,14 @@
-
+body{
+padding-bottom:70px;
+}
 .tab.active{
     display: inline-block;
 }
 .tab {
     display: none;
+}
+
+.row.EditGoal{
+    font-family: 'Josefin Sans', sans-serif;
+
 }
