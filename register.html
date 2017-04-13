@@ -45,7 +45,7 @@
   <img src='CSS/Img/20.jpg' class="img-responsive" id="backgroundRegister">
 
 
-    <div class="container">
+  <div class="container">
         <section>
             <div class="page-header" id="intrebarifrecvente">
                 <h2>  <span class="glyphicon glyphicon-chevron-right"></span> Frequently asked questions, <small> and, of course, the proper answers.For the questions and answers not found here,please <a href="mailto:webmaster@habitsformer.com"> contact us!</a></small></h2>
@@ -246,7 +246,6 @@
                     </div>
                 </div>
 
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
@@ -263,7 +262,6 @@
                     </div>
                 </div>
 
-
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
@@ -279,92 +277,67 @@
                         </div><!--ends panel collapse-13-->
                     </div>
                 </div>
-            </div><!-- ends panel group-->
+           </div><!-- ends panel group-->
 
 
         </section>
-    </div><!--ends first container-->
 
-
-    <div class="container">
         <div class="row">
-            <!--<div class="col-sm-4">
-              <img src="CSS/Img/firstStep.jpg" class="img-circle" style="position: relative;height:200px;width: auto;z-index: auto">
-            </div>-->
             <div class="col-sm-12">
                 <h1 style="color:#3C697E;text-align: center;">Create account and...</h1>
                 <h2 style="color:#FF882E;text-align: center;"> congrats on taking the first step towards improving yourself :)</h2>
             </div>
         </div>
-    </div><!--ends second container-->
 
-    <!--contact form-->
+        <!--contact form-->
 
-    <div class="container">
         <section>
             <div class="row">
-
-                <div class="col-lg-8">
+                <div class="col-sm-12">
                     <form class="form-horizontal" action="">
                     <div class="form-group">
                         <label for="user-name" class="col-lg-2 control-label" style="color:#3C697E;">Name</label>
-                        <div class="col-lg-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                <input type="text"  class="form-control" id="user-name" placeholder="Enter your name" ng-model="userName">
-                            </div>
                         </div><!--ends from-group-->
                     </div>
 
-
                     <div class="form-group">
                         <label for="user-email" class="col-lg-2 control-label" style="color:#3C697E;">Your email</label>
-                        <div class="col-lg-10">
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input type="text"  class="form-control" id="user-email" placeholder="Enter your email" ng-model="email">
                             </div>
-                        </div>
                     </div><!--ends from-group-->
 
                         <div class="form-group">
                             <label for="password" class="col-lg-2 control-label" style="color:#3C697E;">Enter the password(min eight chars)</label>
-                            <div class="col-lg-10">
                                 <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 <input type="password"  class="form-control" id="password" placeholder="Enter password" ng-model="password">
                                 </div>
-                            </div>
                         </div><!--ends from-group-->
 
                         <div class="form-group">
                             <label for="password" class="col-lg-2 control-label" style="color:#3C697E;">Confirm password</label>
-                            <div class="col-lg-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <input type="password"  class="form-control" id="password1" placeholder="Confirm password" ng-model="confirmPassword">
                                 </div>
-                            </div>
-                        </div><!--ends from-group-->
+                         </div> <!--ends from-group-->
+                  </form>
 
-                    <div class="form-group">
-                        <div class="col-xs-12 col-xs-offset-3 col-md-12 col-md-offset-5 col-lg-10 col-lg-offset-6" style="float: left;">
-                            <button type="button" class="btn btn-lg" ng-click="Register()">Create account</button>
-                        </div>
+                    <div class="btn-group-lg col-xs-4 col-xs-offset-3 col-lg-4 col-lg-offset-4" role="group" aria-label="Button Group">
+                        <button type="button" class="btn btn-lg" ng-click="Register()">Create account</button>
+                        <button type="button" class="btn btn-lg" onclick="Switch('Login')">Back to login</button>
                     </div>
 
-                        <div class="form-group">
-                            <div class="col-xs-12 col-xs-offset-3 col-md-12 col-md-offset-5 col-lg-10 col-lg-offset-6" style="float: left;">
-                                <button type="button" class="btn btn-lg" onclick="Switch('Login')" style="float: left;">Back to login</button>
-                            </div>
-                        </div>
-
-                  </form>
                 </div><!--ends col-lg-8-->
-              </div>
-        </section><!-- ends row-->
+             </div><!-- ends row-->
+        </section>
 
-    </div><!--ends container contact form-->
+  </div><!--ends container-->
 
 
 
