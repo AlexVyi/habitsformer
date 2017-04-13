@@ -43,33 +43,45 @@
 <body ng-app="HabitsFormer" ng-controller="LoginController">
 
 <div class="overlay" id="overlay">
-    <div class="container" style="height:100%;position:fixed;margin-top: 100px;">
-        <form action="" class="form-inline">
-            <div class="form-group hidden">
-                <label for="user-email" class="control-label" style="color:#3C697E;">Your email</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input type="text"  class="form-control" id="user-email" placeholder="Enter your email" ng-model="email" style="width:250px;">
-                    </div>
-            </div><!--ends from-group-->
 
-            <div class="form-group hidden">
-                <label for="password" class="control-label" style="color:#3C697E;">Enter the password</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input type="password"  class="form-control" id="password" placeholder="Enter password" ng-model="password" style="width:250px;">
-                    </div>
-            </div><!--ends from-group-->
+    <div class="container" style="width:100%;height:100%;position:fixed;margin-top: 20vh;padding: 0;">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-sm-5 col-sm-offset-4">
+                <div class="panel panel-info hidden">
+                    <div class="panel-heading">
+                        <form action="">
+                            <div class="form-group hidden">
+                                <label for="user-email" class="control-label" style="color:#3C697E;">Your email</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input type="text"  class="form-control" id="user-email" placeholder="Enter your email" ng-model="email" style="width:100%;">
+                                </div>
+                            </div><!--ends from-group-->
 
-            <div class="checkbox hidden" id="check">
-                <label>
-                    <input type="checkbox">Remember me
-                </label>
+                            <div class="form-group hidden">
+                                <label for="password" class="control-label" style="color:#3C697E;">Enter the password</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input type="password"  class="form-control" id="password" placeholder="Enter password" ng-model="password" style="width:100%;">
+                                </div>
+                            </div><!--ends from-group-->
+
+                            <div class="checkbox hidden" id="check">
+                                <label>
+                                    <input type="checkbox">Remember me
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-body">
+                        <button type="button" class="btn btn-danger hidden" ng-click="Login()" id="theRealContinue">Continue</button>
+                    </div>
+                </div>
             </div>
-                <button type="button" class="btn btn-danger hidden" ng-click="Login()" id="theRealContinue">Continue</button>
-
-        </form>
+        </div>
     </div>
+</div>
+
 </div><!--ends overlay-->
 
 
@@ -78,6 +90,7 @@
 <video src="CSS/Img/background.mp4" autoplay muted loop playsinline></video>
 
 <div class="container" id="mainContainer">
+
     <div class="header clearfix" style="z-index: 111;position:relative;">
         <nav id="delayDueToFb">
             <ul class="nav nav-pills pull-right" >
@@ -87,7 +100,6 @@
                 <li><fb:login-button size="large" scope="public_profile,email" onlogin="checkLoginState();" id="fb" style="color:transparent;">Continue with Facebook</fb:login-button></li>
             </ul>
         </nav>
-
         <h3 class="text-muted hidden-xs" style="color:antiquewhite;">Habitsformer</h3>
     </div>
 

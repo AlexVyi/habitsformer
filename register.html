@@ -296,7 +296,7 @@
                 <div class="col-sm-12">
                     <form class="form-horizontal" action="">
                     <div class="form-group">
-                        <label for="user-name" class="col-lg-2 control-label" style="color:#3C697E;">Name</label>
+                        <label for="user-name" class="control-label" style="color:#3C697E;">Name</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                <input type="text"  class="form-control" id="user-name" placeholder="Enter your name" ng-model="userName">
@@ -304,7 +304,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="user-email" class="col-lg-2 control-label" style="color:#3C697E;">Your email</label>
+                        <label for="user-email" class="control-label" style="color:#3C697E;">Your email</label>
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                             <input type="text"  class="form-control" id="user-email" placeholder="Enter your email" ng-model="email">
@@ -312,7 +312,7 @@
                     </div><!--ends from-group-->
 
                         <div class="form-group">
-                            <label for="password" class="col-lg-2 control-label" style="color:#3C697E;">Enter the password(min eight chars)</label>
+                            <label for="password" class="control-label" style="color:#3C697E;">Enter the password(min eight chars)</label>
                                 <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                 <input type="password"  class="form-control" id="password" placeholder="Enter password" ng-model="password">
@@ -320,21 +320,19 @@
                         </div><!--ends from-group-->
 
                         <div class="form-group">
-                            <label for="password" class="col-lg-2 control-label" style="color:#3C697E;">Confirm password</label>
+                            <label for="password" class="control-label" style="color:#3C697E;">Confirm password</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <input type="password"  class="form-control" id="password1" placeholder="Confirm password" ng-model="confirmPassword">
                                 </div>
                          </div> <!--ends from-group-->
                   </form>
-
-                    <div class="btn-group-lg col-xs-4 col-xs-offset-3 col-lg-4 col-lg-offset-4" role="group" aria-label="Button Group">
-                        <button type="button" class="btn btn-lg" ng-click="Register()">Create account</button>
-                        <button type="button" class="btn btn-lg" onclick="Switch('Login')">Back to login</button>
-                    </div>
-
-                </div><!--ends col-lg-8-->
-             </div><!-- ends row-->
+                </div><!--ends col-sm-12-->
+                <div class="btn-group-lg col-xs-12 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-4" role="group" aria-label="Button Group">
+                    <button type="button" class="btn btn-lg" ng-click="Register()">Create account</button>
+                    <button type="button" class="btn btn-lg" onclick="Switch('Login')">Back to login</button>
+                </div>
+            </div><!-- ends row-->
         </section>
 
   </div><!--ends container-->
