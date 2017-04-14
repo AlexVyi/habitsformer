@@ -18,6 +18,10 @@ $(document).ready(function () {
     }, 1500);
 
 });
-/**set the input for eneter holiday either with fb or with native login.*/
- /*also tell the user that next time, to login with the new pass if success.*/
 
+window.addEventListener(onclick, function backPage() {
+    var page = document.getElementById("loginContainer");
+    if (page) {
+        window.history.go(-1);
+    }
+});

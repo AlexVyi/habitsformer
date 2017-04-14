@@ -86,13 +86,10 @@
                 </nav>
         </div>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navContainer">
-            <span class="icon-bar" style="background-color: #5dc2f1"></span>
-            <span class="icon-bar" style="background-color: #5dc2f1"></span>
-            <span class="icon-bar" style="background-color: #5dc2f1"></span>
-            <span class="icon-bar" style="background-color: #5dc2f1"></span>
+            <span ><i class="fa fa-bars" aria-hidden="true" style="font-size:40px;color: #5dc2f1"></i></span>
         </button>
 
-        <div class="panel panel-info" ng-model="user" onclick="closeNav()">
+        <div class="panel panel-info" ng-model="user">
             <div class="panel-heading">
                 <h1 class="panel-title" style="font-family:'Josefin Sans', sans-serif;font-size:50px;">Hi {{user.userName}}, let's <span class="label label-default">get shit done!</span></h1>
             </div>
@@ -253,7 +250,7 @@
             </div><!---ends col-md-8 goals themselves--->
         </div><!--ends the row above-->
 
-        <div class="row tab AddGoals" onclick="closeNav()" style="width: 100%;font-family: 'Josefin Sans', sans-serif">
+        <div class="row tab AddGoals" style="width: 100%;font-family: 'Josefin Sans', sans-serif">
             <div class="col-xs-12  col-lg-6 col-lg-offset-3">
                 <div class="panel panel-default" id="addGoals">
                     <div class="panel-heading">
@@ -307,7 +304,7 @@
             </div>
         </div><!--ends row tab AddGoals-->
 
-        <div class="row tab EditGoal" onclick="closeNav()" style="width: 100%;">
+        <div class="row tab EditGoal" style="width: 100%;">
             <div class="col-xs-12 col-lg-6 col-lg-offset-3">
                 <div class="panel panel-info" style="background-color: transparent;">
                     <div class="panel-heading">
@@ -374,7 +371,7 @@
             </div>
         </div><!--ends row tab editGoal-->
 
-        <div class="row tab Account"  onclick="closeNav()" style="width: 100%;font-family: 'Josefin Sans', sans-serif;">
+        <div class="row tab Account" style="width: 100%;font-family: 'Josefin Sans', sans-serif;">
             <div class="col-xs-12 col-lg-8 col-lg-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -429,16 +426,10 @@
                                     <input id="Confirm new Password" type="password" ng-model="editUser.confNewPsw" class="form-control" placeholder="Confirm new password">
                                 </div>
 
-                               <!-- <p class="form-control-static">Current Password</p>
-                                <div class="input-group">
-                                    <label for="Current Password" class="sr-only">Current Password</label>
-                                    <span class="input-group-addon"><i class="fa fa-unlock" aria-hidden="true"></i></span>
-                                    <input id="Current Password" type="password" ng-model="editUser.acutalPsw" class="form-control" placeholder="Current password">
-                                </div>--->
                                 <div class="btn-group btn-group-justify" role="Group" aria-label="Button-Group" style="width: 100%;">
-                                   <button class="btn btn-default" ng-click="SaveAccountChanges()" style="width: 100%;margin-top: 10px;">Save</button>
-                                   <button data-toggle="modal" data-target="#mymagicdisplay" id="mymagicbutton" class="btn btn-default" style="width: 100%;margin-top: 10px;">Enter holiday mode</button>
-                                   <button class="btn btn-default" ng-click="DeleteAccount()" style="width: 100%;margin-top: 10px;">Delete Account</button>
+                                   <button  data-toggle="modal" data-target="#mymagicdisplay"  class="btn btn-default" ng-click="SaveAccountChanges()" style="width: 100%;margin-top: 10px;">Save</button>
+                                   <button  data-toggle="modal" data-target="#mymagicdisplay"  id="mymagicbutton" class="btn btn-default" style="width: 100%;margin-top: 10px;">Enter holiday mode</button>
+                                   <button  data-toggle="modal" data-target="#mymagicdisplay"  class="btn btn-default" ng-click="DeleteAccount()" style="width: 100%;margin-top: 10px;">Delete Account</button>
                                 </div>
 
                             </form>
@@ -448,26 +439,22 @@
             </div>
         </div><!--ends row tab Account-->
 
-<div class="modal fade" id="mymagicdisplay">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">Please
-                <fb:login-button size="large" scope="public_profile,email" onlogin="checkLoginState();" id="fb">Continue with Facebook</fb:login-button>
+        <div class="modal fade" id="mymagicdisplay">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="form-control-static">Current Password</p>
+                        <div class="input-group">
+                            <label for="Current Password" class="sr-only">Current Password</label>
+                            <span class="input-group-addon"><i class="fa fa-unlock" aria-hidden="true"></i></span>
+                            <input id="Current Password" type="password" ng-model="editUser.acutalPsw" class="form-control" placeholder="Current password">
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </div>
-    <!--facebook-->
-    <div class="row" style="display: none;">
-        <div class="row fbRow">
-            <div class="col-sm-12">
-                <div id="status"></div>
-                <div id="fb-root"></div>
-            </div>
-        </div>
-    </div>
-    <!--facebook ends-->
-</div>
-        <div class="row tab FAQ" onclick="closeNav()">
+        <div class="row tab FAQ">
             <div class="container">
                 <section>
                     <div class="page-header" id="intrebarifrecvente">
@@ -721,7 +708,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
-<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1218512284931824";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 <script src="Plugins/sweetalert-master/dist/sweetalert.min.js"></script>
 <script src="Js/data.js"></script>
 <script src="Js/mainPageController.js"></script>
