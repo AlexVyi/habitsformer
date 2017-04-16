@@ -11,4 +11,3 @@ function changeTab(tabName){
   $(".tabButton").removeClass("active");
   $("."+tabName).addClass("active");
 }
-
