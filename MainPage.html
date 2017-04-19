@@ -1,15 +1,16 @@
 <!doctype html>
 <html>
 <head>
+    <title>Your Goals</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <meta name="description" content="This could be the day when you stop that self-distructive thing that you do.Form new,good habits"/>
+
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"  href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <!-- Latest compiled and minified JavaScript -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
@@ -40,6 +41,13 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/favicon-144.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <meta property="fb:app_id"              content="1218512284931824">
+    <meta property="og:url"                content="http://habitsformer.com/MainPage.html" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="Your Goals" />
+    <meta property="og:description"        content="What is your goal?" />
+    <meta property="og:image"              content="habitsformer.com/CSS/Img/begin.jpg">
 </head>
 
 <body ng-app="HabitsFormer" ng-controller="MainPageController">
@@ -74,20 +82,23 @@
 <div ng-hide="user.onHoliday">
     <div class="container" id="wholePageContainer">
 
-        <div id="navContainer" class="container-fluid collapse navbar-collapse">
-            <nav role="navigation" class="navbar navbar-inverse  navbar-fixed-bottom">
-                    <ul class="nav nav-pills col-xs-12" style="padding-left: 30px;">
-                        <li role="presentation"><a href="#"><h5 class="tabButton Home" onclick="changeTab('Home')">Home</h5></a></li>
-                        <li role="presentation"><a href="#"><h5 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h5></a></li>
-                        <li role="presentation"><a href="#"><h5 class="tabButton Account" onclick="changeTab('Account')">Account</h5></a></li>
-                        <li role="presentation"><a href="#"><h5 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h5></a></li>
-                        <li role="presentation" class="navbar-right"><a href="#"><h5 class="" ng-click="Logout()">Logout</h5></a></li>
-                     </ul>
-                </nav>
-        </div>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navContainer">
-            <span ><i class="fa fa-bars" aria-hidden="true" style="font-size:40px;color: #5dc2f1;cursor: pointer"></i></span>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navContainer" style="background-color: transparent;border: none;">
+            <span ><i class="fa fa-bars" aria-hidden="true" style="font-size:35px;color: #5dc2f1;cursor: pointer;background-color: transparent;border: none;"></i></span>
         </button>
+
+        <nav role="navigation" class="navbar navbar-inverse navbar-fixed-bottom collapse navbar-collapse" id="navContainer">
+           <div class="container">
+               <div class="navbar-header">
+                    <ul class="nav navbar-nav" style="padding-left: 30px;">
+                        <li role="presentation"><a href="#"><h4 class="tabButton Home" onclick="changeTab('Home')">Home</h4></a></li>
+                        <li role="presentation"><a href="#"><h4 class="tabButton AddGoals" onclick="changeTab('AddGoals')">Add Goals</h4></a></li>
+                        <li role="presentation"><a href="#"><h4 class="tabButton Account" onclick="changeTab('Account')">Account</h4></a></li>
+                        <li role="presentation"><a href="#"><h4 class="tabButton FAQ" onclick="changeTab('FAQ')">FAQ</h4></a></li>
+                        <li role="presentation" class=""><a href="#"><h4 class="" ng-click="Logout()">Logout</h4></a></li>
+                     </ul>
+              </div>
+           </div>
+        </nav>
 
         <div class="panel panel-info" ng-model="user">
             <div class="panel-heading">
@@ -106,8 +117,11 @@
         <div class="row tab Home active">
             <div class="col-xs-10 col-xs-offset-1 col-lg-10 col-lg-offset-1"><!--start col surrounds the goals themselves-->
                 <div class="row" id="GoalsDisplayed">
+
                     <div class="row page-header" id="DisplayDont">
                         <blockquote><h1><span class="label label-danger">Dont</span><br>&lt;do something&gt;</h1></blockquote>
+                        <fb:share-button  data-href="" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjkaMiaRLgvY&amp;src=sdkpreparse">Share</a> </fb:share-button>
+
                         <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in donts">
                             <div>
                                 <h2 class="page-header">{{goal.title}}</h2>
@@ -129,7 +143,7 @@
 
                                     <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
 
-                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span></button>
+                                    <button href="http://habitsformer.com" id="shareBtn" type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal" style="background-color: #4267B2;border: none;"> <span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;color:white;"></i></span></button>
 
                                     <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span></button>
 
@@ -142,6 +156,9 @@
 
                     <div class="row page-header" id="DisplayDaily">
                         <blockquote><h1><span class="label label-primary">Today</span><br>&lt;set a daily goal&gt;</h1></blockquote>
+
+                        <fb:share-button id="shareBtn" data-href="" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjkaMiaRLgvY&amp;src=sdkpreparse">Share</a> </fb:share-button>
+
                         <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in dailys">
                             <div>
                                 <h2 class="page-header">{{goal.title}} <span class="countdown">({{UpdateTime(goal).hours | numberFixedLen:2}}:{{UpdateTime(goal).minutes | numberFixedLen:2}}:{{UpdateTime(goal).seconds | numberFixedLen:2}})</span></h2>
@@ -165,7 +182,8 @@
 
                                     <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span></button>
 
-                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span></button>
+                                    <button   type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal" style="background-color: #4267B2;border: none;"> <span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;color:white;"></i></span></button>
+
 
                                     <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span></button>
 
@@ -177,6 +195,9 @@
 
                     <div class="row page-header" id="DisplayWeekly">
                         <blockquote><h1><span class="label label-primary">This Week</span><br>&lt;set a weekly goal&gt;</h1></blockquote>
+
+                        <fb:share-button  data-href="" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjkaMiaRLgvY&amp;src=sdkpreparse">Share</a> </fb:share-button>
+
                         <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in weeklys">
                             <div>
                                 <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillWeek}} days, {{UpdateTime(goal).hours}} hours left)</h2>
@@ -200,7 +221,7 @@
 
                                     <button type="button" class="btn btn-default" ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.money!=0"><span class="addon"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></span> </button>
 
-                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></span> </button>
+                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal" style="background-color: #4267B2;border: none;"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;color:white;"></i></span></button>
 
                                     <button type="button" class="btn btn-default" ng-show="GetActualDate()-goal.timestamp>1000*3600*24*14" ng-click="EditGoal(goal)" title="edit goal"><span class="addon"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></span> </button>
 
@@ -212,6 +233,9 @@
 
                     <div class="row page-header" id="DisplayMonthly">
                         <blockquote><h1><span class="label label-primary">This Month </span><br>&lt;set a monthly goal&gt;</h1></blockquote>
+
+                        <fb:share-button  data-href="" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjkaMiaRLgvY&amp;src=sdkpreparse">Share</a> </fb:share-button>
+
                         <div class="col-xs-12 col-lg-12 goal" ng-repeat="goal in monthlys">
                             <div>
                                 <h2 class="page-header">{{goal.title}} ({{UpdateTime(goal).daysTillMonth}} days, {{UpdateTime(goal).hours}} hours left)</h2>
@@ -235,7 +259,7 @@
 
                                     <button type="button" class="btn btn-default"  ng-click="Monetize(goal)" title="not monetised (click to switch)" ng-hide="goal.isMonetised"><i class="glyphicon glyphicon-usd" style="font-size: 25px;"></i></button>
 
-                                    <button type="button" class="btn btn-default"  ng-click="ShareGoal(goal)" title="share goal"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;"></i></button>
+                                    <button type="button" class="btn btn-default" ng-click="ShareGoal(goal)" title="share goal" style="background-color: #4267B2;border: none;"><span class="addon"><i class="glyphicon glyphicon-share-alt" style="font-size: 25px;color:white;"></i></span></button>
 
                                     <button type="button" class="btn btn-default"  ng-show="GetActualDate()-goal.timestamp>1000*3600*24*28" ng-click="EditGoal(goal)" title="edit goal"><i class="glyphicon glyphicon-pencil" style="font-size: 25px;"></i></button>
 
@@ -440,7 +464,7 @@
         </div><!--ends row tab Account-->
 
         <div class="modal fade" id="mymagicdisplay">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-md"  style="margin-top:35%;">
                 <div class="modal-content">
                     <div class="modal-body">
                         <p class="form-control-static">Current Password</p>
@@ -453,7 +477,8 @@
                 </div>
             </div>
 
-        </div>
+        </div><!--ends modal-->
+
         <div class="row tab FAQ">
             <div class="container">
                 <section>
@@ -697,15 +722,26 @@
 
         </div><!--ends row tab FAQ-->
 
+        <div id="fb-root" style="display: none;"></div><!--facebook share div-->
+
     </div><!--end the page container-->
 </div><!--ends ng-hide="user.onHoliday"-->
 
+<script> document.getElementById("shareBtn").onclick = function() {
+FB.ui({
+method: 'share',
+display: 'popup',
+href: 'www.habitsformer.com',
+app_id:'1218512284931824',
+}, function(response){ });
+};</script>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=1218512284931824";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+<script src="Js/faceb.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
 <script src="Plugins/sweetalert-master/dist/sweetalert.min.js"></script>

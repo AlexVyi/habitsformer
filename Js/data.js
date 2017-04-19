@@ -1,2 +1,2 @@
-var cwd = "http://localhost:8888/habitsformer";
+var cwd = "http://localhost:8888/habitsformer/";
 

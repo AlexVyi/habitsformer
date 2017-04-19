@@ -25,8 +25,15 @@ $(document).ready(function () {
         $("#check").addClass("hidden");
         $("#mainContainer").removeClass("hidden");
     });
+
 });
-var times = 0;
+
+
+
+
+
+
+/*var times = 0;
 var container = document.getElementById("loginContainer");
 var mainContainer = document.getElementById("mainContainer");
 function urlChange() {
@@ -45,4 +52,4 @@ urlChange();
         }
      mainContainer.innerHTML = mainContainer + times;
 
-}
+}*/
