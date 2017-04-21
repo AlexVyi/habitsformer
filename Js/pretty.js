@@ -2,7 +2,7 @@
 /*********toggle pages*************/
 $(document).ready(function () {
 
-    $("#continue").click(function () {
+     $("#continue").click(function () {
         $(".panel-info").removeClass("hidden");
         $(".form-group").removeClass("hidden");
         $("#theRealContinue").removeClass("hidden");
@@ -11,20 +11,22 @@ $(document).ready(function () {
         // $("#overlay").addClass("hidden");
         $("#mainContainer").addClass("hidden");
 
-    });
+     });
 /******delay the loading of button from landing*****/
 
     setTimeout(function(){
         $("#delayDueToFb").fadeIn(500);
-    }, 1500);
+      }, 1500);
 
-    $("#theFakeBack").click(function () {
+     $("#theFakeBack").click(function () {
         $(".panel-info").addClass("hidden");
         $(".form-group").addClass("hidden");
         $("#theRealContinue").addClass("hidden");
         $("#check").addClass("hidden");
         $("#mainContainer").removeClass("hidden");
-    });
+     });
+
+
 
 });
 
