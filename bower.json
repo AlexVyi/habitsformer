@@ -1,0 +1,28 @@
+{
+  "name": "habitsformer",
+  "homepage": "https://github.com/AlexVyi/habitsformer",
+  "authors": [
+    "AlexVyi <alexandru@epk.ro>"
+  ],
+  "description": "create good habits and drop bad ones",
+  "main": "index.html",
+  "keywords": [
+    "qw"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Plugins/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.4",
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
+    "angularfire": "^2.3.0"
+  }
+}

@@ -14,9 +14,9 @@ function changeTab(tabName){
 
 }
 
-$( document ).ready(function() {
+/*$( document ).ready(function() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip("show");
     });
-});
+});*/
 

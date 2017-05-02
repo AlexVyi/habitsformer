@@ -1,5 +1,5 @@
 body {
-padding-bottom:70px;
+padding-bottom:90px;
 font-family:'Roboto', sans-serif;
 }
 .tab.active{
@@ -12,6 +12,9 @@ font-family:'Roboto', sans-serif;
 .row.EditGoal{
     font-family: 'Josefin Sans', sans-serif;
 
+}
+#GoalsDisplayed{
+    padding-bottom: 55px;
 }
 #mainImg {
     position: fixed;
@@ -26,6 +29,7 @@ font-family:'Roboto', sans-serif;
     background: no-repeat;
     background-size: cover;
     transition: 1s opacity;
+
 }
 #mainCols{
     position: absolute;
